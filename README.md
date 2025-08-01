@@ -1,5 +1,5 @@
 # 🎵 Media Downloader
-Easy download music and videos from any web source such as youtube/facebook/reddit/etc...
+A command-line tool written in Rust that easy download music and videos from any web source such as youtube/facebook/reddit/etc...
 
 ✨ Tested And Working on:
 - Facebook
@@ -22,11 +22,13 @@ Install ffmpeg and yt-dlp from your package manager
 Opening executable is the easy and friendly way
 
 ⚙️ Additional Arguments:
-- --ytdlpPath:	Path to yt-dlp binary
-- --ffmpegPath:	Path to ffmpeg binary
-- --resultFolder:	Folder where the downloaded file will be saved
-- --quality:	Download quality: high (default), medium, or low
-- --extension:	Output file extension (e.g., mp3, mp4, m4a, etc.)
+| Option           | Description                                          | Example                      |
+|------------------|------------------------------------------------------|------------------------------|
+| `--ytdlpPath`     | Path to `yt-dlp` binary                              | `--ytdlpPath ./yt-dlp.exe`   |
+| `--ffmpegPath`    | Path to `ffmpeg` binary                              | `--ffmpegPath ./ffmpeg.exe`  |
+| `--resultFolder`  | Folder where the downloaded file will be saved       | `--resultFolder ./downloads` |
+| `--quality`       | Download quality: `high` (default), `medium`, or `low`| `--quality medium`           |
+| `--extension`     | Output file extension (e.g., `mp3`, `mp4`, `m4a`)   | `--extension mp3`            |
 
 ---
 

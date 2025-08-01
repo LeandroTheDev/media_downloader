@@ -72,6 +72,8 @@ fn main() {
 
         if media_type == "m" || media_type == "music" {
             extension = "mp3".to_string();
+        } else {
+            extension = "mp4".to_string();
         }
 
         // Ask for quality
@@ -184,7 +186,7 @@ fn main() {
         .arg(&link);
 
     if !extension.is_empty() {
-        if AUDIO_FORMATS.contains(&extension.as_str()) {            
+        if AUDIO_FORMATS.contains(&extension.as_str()) {
             cmd.arg("-x").arg("--audio-format").arg(&extension);
         } else if VIDEO_FORMATS.contains(&extension.as_str()) {
             cmd.arg("--recode-video").arg(&extension);

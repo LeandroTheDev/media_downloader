@@ -29,6 +29,7 @@ Opening executable is the easy and friendly way
 | `--resultFolder`  | Folder where the downloaded file will be saved       | `--resultFolder ./downloads` |
 | `--quality`       | Download quality: `high` (default), `medium`, or `low`| `--quality medium`           |
 | `--extension`     | Output file extension (e.g., `mp3`, `mp4`, `m4a`)   | `--extension mp3`            |
+| `--ignorePlaylist`| Does not download the entire playlist                | `--ignorePlaylist`            |
 
 ---
 

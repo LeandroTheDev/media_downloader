@@ -16,6 +16,7 @@ fn main() {
     let mut ffmpeg_path: String = String::new();
     let mut extension: String = String::new();
     let mut link: String = String::new();
+    let mut ignore_playlist: bool = false;
 
     let mut i: usize = 1;
     while i < args.len() {
@@ -49,6 +50,9 @@ fn main() {
                     extension = args[i + 1].clone();
                     i += 1;
                 }
+            }
+            "--ignorePlaylist" => {
+                ignore_playlist = true;
             }
             _ => {
                 // Assume the first unknown argument is the link
@@ -184,6 +188,10 @@ fn main() {
         .arg("--ffmpeg-location")
         .arg(&ffmpeg_path)
         .arg(&link);
+
+    if ignore_playlist {
+        cmd.arg("--no-playlist");
+    }
 
     if !extension.is_empty() {
         if AUDIO_FORMATS.contains(&extension.as_str()) {

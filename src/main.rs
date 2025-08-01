@@ -3,6 +3,9 @@ use std::io::{self, Write};
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
+const AUDIO_FORMATS: [&str; 6] = ["mp3", "aac", "flac", "wav", "m4a", "opus"];
+const VIDEO_FORMATS: [&str; 4] = ["mp4", "mkv", "webm", "avi"];
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -69,8 +72,6 @@ fn main() {
 
         if media_type == "m" || media_type == "music" {
             extension = "mp3".to_string();
-        } else {
-            extension = "mp4".to_string();
         }
 
         // Ask for quality
@@ -183,7 +184,13 @@ fn main() {
         .arg(&link);
 
     if !extension.is_empty() {
-        cmd.arg("-x").arg("--audio-format").arg(&extension);
+        if AUDIO_FORMATS.contains(&extension.as_str()) {            
+            cmd.arg("-x").arg("--audio-format").arg(&extension);
+        } else if VIDEO_FORMATS.contains(&extension.as_str()) {
+            cmd.arg("--recode-video").arg(&extension);
+        } else {
+            eprintln!("Warning: Unknown extension '{}', ignoring.", extension);
+        }
     }
 
     // Wait for the process to finish and capture output
